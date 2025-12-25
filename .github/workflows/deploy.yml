@@ -1,0 +1,60 @@
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+    
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v3
+      with:
+        dotnet-version: '10.0.x'
+    
+    - name: Restore dependencies
+      run: dotnet restore
+      working-directory: ./SistemaChamados.Api
+    
+    - name: Build
+      run: dotnet build --no-restore --configuration Release
+      working-directory: ./SistemaChamados.Api
+    
+    - name: Publish
+      run: dotnet publish -c Release -o ./publish
+      working-directory: ./SistemaChamados.Api
+    
+    - name: Create Documentation Directory
+      run: mkdir -p docs
+    
+    - name: Copy Swagger UI
+      run: |
+        cp ./SistemaChamados.Api/publish/wwwroot/* docs/ 2>/dev/null || true
+        echo "# Sistema de Chamados - API Documentation" > docs/index.md
+        echo "" >> docs/index.md
+        echo "## Endpoints" >> docs/index.md
+        echo "- GET /api/chamados - Listar todos" >> docs/index.md
+        echo "- GET /api/chamados/{id} - Buscar por ID" >> docs/index.md
+        echo "- POST /api/chamados - Criar novo" >> docs/index.md
+        echo "- PUT /api/chamados/{id} - Atualizar" >> docs/index.md
+        echo "- DELETE /api/chamados/{id} - Deletar" >> docs/index.md
+    
+    - name: Upload to GitHub Pages
+      uses: actions/upload-artifact@v4
+      with:
+        name: github-pages
+        path: docs/
+    
+    - name: Deploy to GitHub Pages
+      uses: peaceiris/actions-gh-pages@v3
+      if: github.ref == 'refs/heads/main'
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        publish_dir: ./docs
+        cname: sistema-chamados-api.com
