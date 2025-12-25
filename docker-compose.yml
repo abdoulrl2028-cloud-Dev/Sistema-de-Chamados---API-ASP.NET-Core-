@@ -1,0 +1,31 @@
+# Docker Compose para desenvolvimento local
+
+version: '3.8'
+
+services:
+  api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "5000:5000"
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ConnectionStrings__DefaultConnection=Server=sqlserver;Database=SistemaChamados;User Id=sa;Password=YourPassword123!;TrustServerCertificate=true;Encrypt=false;
+    depends_on:
+      - sqlserver
+    volumes:
+      - ./SistemaChamados.Api:/app
+
+  sqlserver:
+    image: mcr.microsoft.com/mssql/server:2022-latest
+    environment:
+      SA_PASSWORD: "YourPassword123!"
+      ACCEPT_EULA: "Y"
+    ports:
+      - "1433:1433"
+    volumes:
+      - sqlserver_data:/var/opt/mssql
+
+volumes:
+  sqlserver_data:

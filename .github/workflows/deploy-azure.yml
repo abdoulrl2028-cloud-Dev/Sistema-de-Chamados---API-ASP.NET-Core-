@@ -1,0 +1,38 @@
+name: Deploy to Azure App Service
+
+on:
+  push:
+    branches: [ main ]
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+    
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v3
+      with:
+        dotnet-version: '10.0.x'
+    
+    - name: Restore dependencies
+      run: dotnet restore
+      working-directory: ./SistemaChamados.Api
+    
+    - name: Build
+      run: dotnet build --no-restore --configuration Release
+      working-directory: ./SistemaChamados.Api
+    
+    - name: Publish
+      run: dotnet publish -c Release -o ./publish
+      working-directory: ./SistemaChamados.Api
+    
+    - name: Deploy to Azure
+      uses: azure/webapps-deploy@v2
+      with:
+        app-name: 'sistema-chamados-api'
+        slot-name: 'production'
+        publish-profile: ${{ secrets.AZURE_PUBLISH_PROFILE }}
+        package: ./SistemaChamados.Api/publish

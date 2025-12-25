@@ -1,8 +1,5 @@
 # Sistema de Chamados - API (ASP.NET Core)
 
-![Build Status](https://github.com/abdoulrl2028-cloud-Dev/Sistema-de-Chamados---API-ASP.NET-Core-/actions/workflows/dotnet.yml/badge.svg)
-![Deploy Status](https://github.com/abdoulrl2028-cloud-Dev/Sistema-de-Chamados---API-ASP.NET-Core-/actions/workflows/deploy.yml/badge.svg)
-
 API REST em C# para gerenciamento de chamados com CRUD completo, SQL Server e controle de status.
 
 ![Build Status](https://github.com/abdoulrl2028-cloud-Dev/Sistema-de-Chamados---API-ASP.NET-Core-/actions/workflows/dotnet.yml/badge.svg)
