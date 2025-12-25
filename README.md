@@ -31,3 +31,7 @@ API REST em C# para gerenciamento de chamados com CRUD completo, SQL Server e co
 - EmAndamento
 - Resolvido
 - Fechado
+
+## 📚 Documentação
+- [Deploy Guide](DEPLOY.md) - Como fazer deploy em Azure, Heroku, Docker
+- [CI/CD Guide](CI-CD.md) - Como funciona o pipeline de testes e build
