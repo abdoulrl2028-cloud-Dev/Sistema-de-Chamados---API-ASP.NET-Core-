@@ -1,3 +1,7 @@
+<p align="center">
+  <img src="https://raw.githubusercontent.com/abdoulrl2028-cloud-Dev/abdoulrl2028-cloud-Dev/main/assets/projects/chamados.jpg" alt="Sistema de Chamados" width="100%">
+</p>
+
 # Sistema de Chamados - API (ASP.NET Core)
 
 API REST em C# para gerenciamento de chamados com CRUD completo, SQL Server e controle de status.
