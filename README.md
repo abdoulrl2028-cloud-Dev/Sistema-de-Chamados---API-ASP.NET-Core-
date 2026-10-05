@@ -1,41 +1,49 @@
 <p align="center">
-  <img src="https://raw.githubusercontent.com/abdoulrl2028-cloud-Dev/abdoulrl2028-cloud-Dev/main/assets/projects/chamados.jpg" alt="Sistema de Chamados" width="100%">
+  <img src="https://raw.githubusercontent.com/abdoulrl2028-cloud-Dev/abdoulrl2028-cloud-Dev/main/assets/projects/chamados.jpg" alt="Ticket system API" width="100%">
 </p>
 
-# Sistema de Chamados - API (ASP.NET Core)
+# Ticket System API (ASP.NET Core)
 
-API REST em C# para gerenciamento de chamados com CRUD completo, SQL Server e controle de status.
+C# REST API for ticket management, with full CRUD, SQL Server, and status tracking.
 
-![Build Status](https://github.com/abdoulrl2028-cloud-Dev/Sistema-de-Chamados---API-ASP.NET-Core-/actions/workflows/dotnet.yml/badge.svg)
+![Build status](https://github.com/abdoulrl2028-cloud-Dev/Sistema-de-Chamados---API-ASP.NET-Core-/actions/workflows/dotnet.yml/badge.svg)
 
 ## Stack
+
 - ASP.NET Core Web API
 - Entity Framework Core
 - SQL Server
 - Swagger
 
-## Funcionalidades
-- Criar chamado
-- Listar chamados
-- Buscar por ID
-- Atualizar (inclui Status)
-- Deletar
+## Features
 
-## Como rodar
-1. Configure a connection string em `appsettings.json`
-2. Rode migrations:
-   - `dotnet ef migrations add InitialCreate`
-   - `dotnet ef database update`
-3. Execute:
-   - `dotnet run`
-4. Acesse o Swagger: `/swagger`
+- Create a ticket
+- List tickets
+- Get a ticket by id
+- Update a ticket, including status
+- Delete a ticket
 
-## Status do Chamado
-- Aberto
-- EmAndamento
-- Resolvido
-- Fechado
+## Run
 
-## 📚 Documentação
-- [Deploy Guide](DEPLOY.md) - Como fazer deploy em Azure, Heroku, Docker
-- [CI/CD Guide](CI-CD.md) - Como funciona o pipeline de testes e build
+1. Set the connection string in `appsettings.json`.
+2. Apply migrations:
+
+```bash
+dotnet ef migrations add InitialCreate
+dotnet ef database update
+dotnet run
+```
+
+3. Open Swagger at `/swagger`.
+
+## Ticket status
+
+- Open
+- In progress
+- Resolved
+- Closed
+
+## Docs
+
+- [Deploy guide](DEPLOY.md) — Azure, Heroku, and Docker
+- [CI/CD guide](CI-CD.md) — test and build pipeline
